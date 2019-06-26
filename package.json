@@ -1,6 +1,6 @@
 {
     "title": "Resume",
-    "name": "startbootstrap-resume",
+    "name": "Tacilio Rodrigues",
     "version": "5.0.7",
     "scripts": {
         "start": "node_modules/.bin/gulp watch"
@@ -14,19 +14,19 @@
         "theme",
         "template"
     ],
-    "homepage": "https://startbootstrap.com/template-overviews/resume",
+    "homepage": "https://taciliorodriguez.com",
     "bugs": {
-        "url": "https://github.com/BlackrockDigital/startbootstrap-resume/issues",
-        "email": "feedback@startbootstrap.com"
+        "url": "https://github.com/taciliorodriguez",
+        "email": "feedback@gmail.com"
     },
-    "license": "MIT",
-    "author": "Start Bootstrap",
+    "license": "Default",
+    "author": "Tacilio Rodrigues",
     "contributors": [
-        "David Miller (http://davidmiller.io/)"
+        "Tacilio Rodriguez (instagram.com/taciliorodriguez)"
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/BlackrockDigital/startbootstrap-resume.git"
+        "url": "https://github.com/taciliorodriguez"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.9.0",
