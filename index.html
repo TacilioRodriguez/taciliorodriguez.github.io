@@ -6,22 +6,12 @@
     <title>Tacilio Rodriguez - Engenheiro de Dados</title>
     <style>
         :root {
-            --primary-color: #005f73; /* Um azul-petróleo mais sóbrio */
-            --dark-bg: #212529;
-            --light-bg: #f8f9fa; /* Um branco levemente acinzentado */
-            --card-bg: #ffffff;
-            --text-color-light: #f8f9fa;
-            --text-color-dark: #212529;
-            --text-color-muted: #6c757d;
-            --border-color: #dee2e6;
+            --primary-color: #005f73; --dark-bg: #212529; --light-bg: #f8f9fa; --card-bg: #ffffff;
+            --text-color-light: #f8f9fa; --text-color-dark: #212529; --text-color-muted: #6c757d; --border-color: #dee2e6;
         }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color-dark);
-            margin: 0;
-            /* Efeito "Cinza Papel Picado" */
+            font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text-color-dark); margin: 0;
             background-color: #e9ecef;
             background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.12' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
         }
@@ -29,35 +19,17 @@
         .container { max-width: 1100px; margin: 0 auto; }
         h1, h2, h3 { margin: 0; line-height: 1.3; }
         h2 { font-size: 2.5rem; margin-bottom: 2.5rem; text-align: center; color: var(--dark-bg); }
-        
         .hero { background-color: var(--dark-bg); color: var(--text-color-light); text-align: center; padding: 6rem 2rem; }
         .hero img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid var(--primary-color); margin-bottom: 1.5rem; }
-        .hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
-        .hero .tagline { font-size: 1.25rem; color: #ced4da; margin-bottom: 1.5rem; }
-        
-        .social-links { display: flex; gap: 20px; justify-content: center; }
-        .social-links a { color: #ced4da; transition: color 0.3s, transform 0.3s; }
-        .social-links a:hover { color: var(--primary-color); transform: scale(1.1); }
-        .social-links svg { width: 32px; height: 32px; fill: currentColor; }
-        
-        #certifications, #projects {
-            background-color: var(--light-bg);
-            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1);
-        }
-        #certifications {
-             border-bottom: 1px solid var(--border-color);
-        }
-
+        #certifications, #projects { background-color: var(--light-bg); box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1); }
+        #certifications { border-bottom: 1px solid var(--border-color); }
         .badge-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5rem; }
-        .badge { text-align: center; }
         .badge img { max-width: 110px; height: auto; object-fit: contain; transition: transform 0.3s ease; }
         .badge img:hover { transform: translateY(-8px); }
-        
         #repo-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
         .repo-card {
-            background-color: var(--card-bg); border-radius: 8px;
-            display: flex; flex-direction: column; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: var(--card-bg); border-radius: 8px; display: flex; flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid var(--border-color);
         }
         .repo-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
@@ -66,20 +38,14 @@
         .repo-card-content h3 { color: var(--dark-bg); font-size: 1.25rem; margin-bottom: 0.5rem; }
         .repo-card-content p { flex-grow: 1; margin-bottom: 1rem; color: var(--text-color-muted); font-size: 0.95em; }
         .repo-card-content .meta { font-size: 0.9rem; color: var(--text-color-muted); }
-        .repo-card-content .meta span { margin-right: 1rem; }
         .repo-card-content a {
             background-color: var(--primary-color); color: white; padding: 0.75rem 1rem; border-radius: 6px;
             text-align: center; text-decoration: none; font-weight: 500; display: block; margin-top: 1rem;
             transition: background-color 0.3s, transform 0.3s;
         }
-        .repo-card-content a:hover { background-color: #003440; transform: scale(1.02); }
-
+        .repo-card-content a:hover { background-color: #003440; }
         .loader, .error-message { text-align: center; font-size: 1.2rem; color: var(--text-color-muted); padding: 2rem; }
         footer { background-color: var(--dark-bg); color: #adb5bd; text-align: center; padding: 2rem; font-size: 0.9rem; }
-        @media (max-width: 768px) {
-            h2 { font-size: 2rem; } .hero h1 { font-size: 2.2rem; } .hero .tagline { font-size: 1.1rem; }
-            #repo-list { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
@@ -87,11 +53,7 @@
         <img id="user-avatar" src="" alt="Foto de Tacilio Rodriguez">
         <h1 id="user-name">Carregando...</h1>
         <p class="tagline">Engenheiro de Dados | Transformando dados em insights e soluções de negócio</p>
-        <div class="social-links">
-            <a id="user-github-link" href="#" target="_blank" rel="noopener noreferrer" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.ททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททททท.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-            <a href="https://www.linkedin.com/in/taciliorodrigues/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-        </div>
-    </header>
+        </header>
     <main>
         <section id="certifications" class="section">
             <div class="container">
@@ -107,7 +69,7 @@
         </section>
         <section id="projects" class="section">
             <div class="container">
-                <h2>Meus Projetos Recentes</h2>
+                <h2>Meus Repositórios Públicos</h2>
                 <div id="repo-list" class="loader">Buscando projetos no GitHub...</div>
             </div>
         </section>
@@ -122,57 +84,44 @@
         // =================================================================================
         // SEU PAINEL DE CONTROLE DE PROJETOS
         // Para personalizar um projeto, adicione uma entrada aqui.
-        // Você pode adicionar uma imagem, uma descrição ou ambos.
-        // Se um projeto não estiver aqui, ele usará os dados padrão do GitHub.
+        // Se um projeto não estiver nesta lista, ele usará os dados padrão do GitHub.
         // =================================================================================
-        const projectOverrides = {
-            'dbt': {
-                image: 'images/projects/imagem-do-repo-1.png',
-                description: 'Esta é minha descrição personalizada para o Projeto 1. Aqui posso explicar em detalhes o que ele faz, as tecnologias usadas e o que aprendi.'
+        const customProjectInfo = {
+            // Exemplo 1: Personalizando imagem e descrição
+            'NOME_EXATO_DO_SEU_REPO_1': {
+                image: 'images/projects/foto-do-projeto-1.png',
+                description: 'Esta é uma descrição personalizada e mais detalhada sobre o meu primeiro projeto, explicando os desafios e tecnologias utilizadas.'
             },
-            'nome-do-seu-repo-2': {
-                image: 'images/projects/imagem-do-repo-2.jpg'
-                // Sem descrição aqui, então o script vai usar a descrição do GitHub.
+
+            // Exemplo 2: Personalizando apenas a imagem
+            'NOME_EXATO_DO_SEU_REPO_2': {
+                image: 'images/projects/foto-do-projeto-2.jpg'
             },
-            'outro-repo-sem-imagem': {
-                description: 'Este projeto não precisa de uma imagem chique, mas quero uma descrição melhor do que a que está no GitHub. É um script de automação para X, Y e Z.'
+
+            // Exemplo 3: Personalizando apenas a descrição
+            'NOME_EXATO_DO_SEU_REPO_3': {
+                description: 'Aqui eu descrevo este projeto de forma mais completa, pois a descrição do GitHub era muito curta.'
             }
+            // Adicione mais projetos aqui, lembrando da vírgula entre eles!
         };
         // =================================================================================
 
         const defaultProjectImage = 'https://placehold.co/600x400/e9ecef/6c757d?text=Reposit%C3%B3rio';
 
         async function fetchUserData() {
-            const userAvatar = document.getElementById('user-avatar');
-            const userName = document.getElementById('user-name');
-            const userGithubLink = document.getElementById('user-github-link');
-            try {
-                const response = await fetch(`https://api.github.com/users/${username}`);
-                if (!response.ok) throw new Error(`API Error: ${response.status}`);
-                const user = await response.json();
-                
-                userAvatar.src = user.avatar_url;
-                userName.textContent = user.name || user.login;
-                userGithubLink.href = user.html_url;
-            } catch (error) {
-                console.error("Erro ao buscar dados do usuário:", error);
-                userName.textContent = "Tacilio Rodriguez";
-                userAvatar.style.display = 'none';
-            }
+            // ... (código para buscar dados do usuário - não muda)
         }
 
         async function fetchAndDisplayProjects() {
             const repoList = document.getElementById('repo-list');
             try {
                 const response = await fetch(`https://api.github.com/users/${username}/repos?sort=pushed&per_page=100`);
-                if (!response.ok) throw new Error('Falha ao buscar repositórios.');
+                if (!response.ok) throw new Error('Falha ao buscar repositórios do GitHub.');
                 
                 const repos = await response.json();
                 repoList.innerHTML = '';
 
-                const filteredRepos = repos
-                    .filter(repo => !repo.fork)
-                    .slice(0, 6);
+                const filteredRepos = repos.filter(repo => !repo.fork && repo.name !== `${username}.github.io`);
 
                 if (filteredRepos.length === 0) {
                     repoList.innerHTML = '<p class="error-message">Nenhum repositório público encontrado.</p>';
@@ -180,10 +129,10 @@
                 }
 
                 filteredRepos.forEach(repo => {
-                    const overrideData = projectOverrides[repo.name] || {};
+                    const customInfo = customProjectInfo[repo.name] || {};
 
-                    const imageUrl = overrideData.image || defaultProjectImage;
-                    const description = overrideData.description || repo.description || 'Este repositório não tem uma descrição.';
+                    const imageUrl = customInfo.image || defaultProjectImage;
+                    const description = customInfo.description || repo.description || 'Sem descrição fornecida.';
 
                     const card = document.createElement('div');
                     card.className = 'repo-card';
@@ -196,15 +145,32 @@
                                 <span>💻 ${repo.language || 'N/A'}</span>
                                 <span>⭐ ${repo.stargazers_count}</span>
                             </div>
-                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">Ver Código no GitHub</a>
+                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
                         </div>
                     `;
                     repoList.appendChild(card);
                 });
-
             } catch (error) {
                 console.error('Erro ao buscar projetos:', error);
-                repoList.innerHTML = '<p class="error-message">Não foi possível carregar os projetos no momento.</p>';
+                repoList.innerHTML = `<p class="error-message">Não foi possível carregar os projetos. Verifique a conexão ou o console para mais detalhes.</p>`;
+            }
+        }
+        
+        // Função para buscar dados do usuário (completa)
+        async function fetchUserData() {
+            const userAvatar = document.getElementById('user-avatar');
+            const userName = document.getElementById('user-name');
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}`);
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
+                const user = await response.json();
+                
+                userAvatar.src = user.avatar_url;
+                userName.textContent = user.name || user.login;
+            } catch (error) {
+                console.error("Erro ao buscar dados do usuário:", error);
+                userName.textContent = "Tacilio Rodriguez";
+                userAvatar.style.display = 'none';
             }
         }
         
