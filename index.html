@@ -4,178 +4,321 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tacilio Rodriguez - Engenheiro de Dados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
+        /* Paleta de Cores e Variáveis Globais */
         :root {
-            --primary-color: #005f73; --dark-bg: #212529; --light-bg: #f8f9fa; --card-bg: #ffffff;
-            --text-color-light: #f8f9fa; --text-color-dark: #212529; --text-color-muted: #6c757d; --border-color: #dee2e6;
+            --primary-color: #0A74DA; /* Um azul mais vibrante e moderno */
+            --dark-bg: #111827;      /* Um cinza-azulado escuro */
+            --light-bg: #F9FAFB;     /* Um branco-gelo sutil */
+            --card-bg: #FFFFFF;
+            --text-color-light: #F9FAFB;
+            --text-color-dark: #1F2937;
+            --text-color-muted: #6B7280;
+            --border-color: #E5E7EB;
         }
+
+        /* Estilos Base */
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text-color-dark); margin: 0;
-            background-color: #e9ecef;
-            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.12' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color-dark);
+            margin: 0;
+            background-color: var(--light-bg);
+            -webkit-font-smoothing: antialiased; /* Melhora a renderização da fonte */
         }
-        .section { padding: 5rem 2rem; }
-        .container { max-width: 1100px; margin: 0 auto; }
-        h1, h2, h3 { margin: 0; line-height: 1.3; }
-        h2 { font-size: 2.5rem; margin-bottom: 2.5rem; text-align: center; color: var(--dark-bg); }
-        .hero { background-color: var(--dark-bg); color: var(--text-color-light); text-align: center; padding: 6rem 2rem; }
-        .hero img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid var(--primary-color); margin-bottom: 1.5rem; }
-        #certifications, #projects { background-color: var(--light-bg); box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1); }
+
+        /* Estrutura e Layout */
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 1rem; }
+        .section { padding: 5rem 0; }
+        h1, h2, h3 { line-height: 1.2; font-weight: 700; }
+        h2 { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; color: var(--text-color-dark); }
+
+        /* Cabeçalho (Hero Section) */
+        .hero {
+            background-color: var(--dark-bg);
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+        .hero img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 25px rgba(10, 116, 218, 0.3);
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+        .hero .tagline { font-size: 1.2rem; color: #D1D5DB; margin-bottom: 2rem; max-width: 600px; margin-inline: auto; }
+        .hero .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .hero .social-link:hover {
+            transform: translateY(-3px);
+            background-color: #0861b6;
+        }
+        .hero .social-link i { font-size: 1.2rem; }
+
+        /* Seção de Certificações */
         #certifications { border-bottom: 1px solid var(--border-color); }
-        .badge-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5rem; }
-        .badge img { max-width: 110px; height: auto; object-fit: contain; transition: transform 0.3s ease; }
-        .badge img:hover { transform: translateY(-8px); }
-        #repo-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+        }
+        .badge { text-align: center; }
+        .badge img {
+            max-width: 120px;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: grayscale(30%);
+            opacity: 0.9;
+        }
+        .badge img:hover {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Seção de Projetos */
+        #projects { background-color: #FFFFFF; }
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
         .repo-card {
-            background-color: var(--card-bg); border-radius: 8px; display: flex; flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid var(--border-color);
+            overflow: hidden; /* Garante que a imagem não vaze */
         }
-        .repo-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
-        .repo-card-image { width: 100%; height: 180px; object-fit: cover; border-radius: 8px 8px 0 0; background-color: var(--border-color); }
-        .repo-card-content { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-        .repo-card-content h3 { color: var(--dark-bg); font-size: 1.25rem; margin-bottom: 0.5rem; }
-        .repo-card-content p { flex-grow: 1; margin-bottom: 1rem; color: var(--text-color-muted); font-size: 0.95em; }
-        .repo-card-content .meta { font-size: 0.9rem; color: var(--text-color-muted); }
-        .repo-card-content a {
-            background-color: var(--primary-color); color: white; padding: 0.75rem 1rem; border-radius: 6px;
-            text-align: center; text-decoration: none; font-weight: 500; display: block; margin-top: 1rem;
-            transition: background-color 0.3s, transform 0.3s;
+        .repo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -4px rgba(0,0,0,0.07);
         }
-        .repo-card-content a:hover { background-color: #003440; }
-        .loader, .error-message { text-align: center; font-size: 1.2rem; color: var(--text-color-muted); padding: 2rem; }
-        footer { background-color: var(--dark-bg); color: #adb5bd; text-align: center; padding: 2rem; font-size: 0.9rem; }
+        .repo-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: var(--light-bg);
+        }
+        .repo-card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .repo-card h3 {
+            color: var(--text-color-dark);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+        .repo-card p {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+            color: var(--text-color-muted);
+            font-size: 0.95rem;
+        }
+        .repo-card .meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-color-muted);
+            margin-bottom: 1.5rem;
+        }
+        .repo-card .meta span { display: flex; align-items: center; gap: 0.3rem; }
+        .repo-card .meta i { font-size: 1.1rem; color: var(--primary-color); }
+        .repo-card a {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .repo-card a:hover { background-color: #0861b6; }
+        
+        .loader, .error-message { text-align: center; font-size: 1.2rem; color: var(--text-color-muted); padding: 2rem; grid-column: 1 / -1; }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--dark-bg);
+            color: #9CA3AF;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .tagline { font-size: 1rem; }
+            .section { padding: 4rem 0; }
+        }
     </style>
 </head>
 <body>
+
     <header class="hero">
-        <img id="user-avatar" src="" alt="Foto de Tacilio Rodriguez">
-        <h1 id="user-name">Carregando...</h1>
-        <p class="tagline">Engenheiro de Dados | Transformando dados em insights e soluções de negócio</p>
-        </header>
+        <div class="container">
+            <img id="user-avatar" src="https://placehold.co/150x150/F9FAFB/111827?text=TR" alt="Foto de Tacilio Rodriguez">
+            <h1 id="user-name">Carregando...</h1>
+            <p class="tagline">Engenheiro de Dados | Transformando dados em insights e soluções de negócio</p>
+            <a href="https://www.linkedin.com/in/seu-usuario/" target="_blank" rel="noopener noreferrer" class="social-link">
+                <i class="ph-linkedin-logo"></i>
+                Meu LinkedIn
+            </a>
+        </div>
+    </header>
+
     <main>
         <section id="certifications" class="section">
             <div class="container">
                 <h2>Certificações e Competências</h2>
                 <div class="badge-grid">
-                    <div class="badge"><img src="images/azure-data-engineer.png" alt="Badge Azure Data Engineer Associate"></div>
-                    <div class="badge"><img src="images/azure-data-fundamentals.png" alt="Badge Azure Data Fundamentals"></div>
-                    <div class="badge"><img src="images/databricks-lakehouse.png" alt="Badge Databricks Lakehouse Fundamentals"></div>
-                    <div class="badge"><img src="images/databricks-architect.png" alt="Badge Azure Databricks Platform Architect"></div>
-                    <div class="badge"><img src="images/dbt-fundamentals.png" alt="Badge dbt Fundamentals"></div>
+                    <div class="badge"><img src="images/certifications/azure-data-engineer.png" alt="Badge Azure Data Engineer Associate"></div>
+                    <div class="badge"><img src="images/certifications/azure-data-fundamentals.png" alt="Badge Azure Data Fundamentals"></div>
+                    <div class="badge"><img src="images/certifications/databricks-lakehouse.png" alt="Badge Databricks Lakehouse Fundamentals"></div>
+                    <div class="badge"><img src="images/certifications/databricks-architect.png" alt="Badge Azure Databricks Platform Architect"></div>
+                    <div class="badge"><img src="images/certifications/dbt-fundamentals.png" alt="Badge dbt Fundamentals"></div>
                 </div>
             </div>
         </section>
+
         <section id="projects" class="section">
             <div class="container">
-                <h2>Meus Repositórios Públicos</h2>
-                <div id="repo-list" class="loader">Buscando projetos no GitHub...</div>
+                <h2>Meus Projetos em Destaque</h2>
+                <div id="repo-grid" class="loader">Buscando projetos no GitHub...</div>
             </div>
         </section>
     </main>
+
     <footer>
         <p>&copy; 2025 Tacilio Rodriguez. Todos os direitos reservados.</p>
     </footer>
 
     <script>
-        const username = 'taciliorodriguez';
+        document.addEventListener('DOMContentLoaded', () => {
+            const githubUsername = 'taciliorodriguez';
 
-        // =================================================================================
-        // SEU PAINEL DE CONTROLE DE PROJETOS
-        // Para personalizar um projeto, adicione uma entrada aqui.
-        // Se um projeto não estiver nesta lista, ele usará os dados padrão do GitHub.
-        // =================================================================================
-        const customProjectInfo = {
-            // Exemplo 1: Personalizando imagem e descrição
-            'NOME_EXATO_DO_SEU_REPO_1': {
-                image: 'images/projects/foto-do-projeto-1.png',
-                description: 'Esta é uma descrição personalizada e mais detalhada sobre o meu primeiro projeto, explicando os desafios e tecnologias utilizadas.'
-            },
-
-            // Exemplo 2: Personalizando apenas a imagem
-            'NOME_EXATO_DO_SEU_REPO_2': {
-                image: 'images/projects/foto-do-projeto-2.jpg'
-            },
-
-            // Exemplo 3: Personalizando apenas a descrição
-            'NOME_EXATO_DO_SEU_REPO_3': {
-                description: 'Aqui eu descrevo este projeto de forma mais completa, pois a descrição do GitHub era muito curta.'
-            }
-            // Adicione mais projetos aqui, lembrando da vírgula entre eles!
-        };
-        // =================================================================================
-
-        const defaultProjectImage = 'https://placehold.co/600x400/e9ecef/6c757d?text=Reposit%C3%B3rio';
-
-        async function fetchUserData() {
-            // ... (código para buscar dados do usuário - não muda)
-        }
-
-        async function fetchAndDisplayProjects() {
-            const repoList = document.getElementById('repo-list');
-            try {
-                const response = await fetch(`https://api.github.com/users/${username}/repos?sort=pushed&per_page=100`);
-                if (!response.ok) throw new Error('Falha ao buscar repositórios do GitHub.');
-                
-                const repos = await response.json();
-                repoList.innerHTML = '';
-
-                const filteredRepos = repos.filter(repo => !repo.fork && repo.name !== `${username}.github.io`);
-
-                if (filteredRepos.length === 0) {
-                    repoList.innerHTML = '<p class="error-message">Nenhum repositório público encontrado.</p>';
-                    return;
+            // =================================================================================
+            // 🎨 SEU PAINEL DE CONTROLE DE PROJETOS
+            // Aqui você pode personalizar a imagem e a descrição de cada repositório.
+            // Basta adicionar uma entrada com o NOME EXATO do repositório do GitHub.
+            // =================================================================================
+            const customProjectInfo = {
+                // Exemplo de como personalizar um projeto:
+                'project-x-data-pipeline': {
+                    image: 'images/projects/project-x.png',
+                    description: 'Pipeline de dados complexo que ingere dados de múltiplas fontes, processa com Spark e armazena em um Data Lakehouse. Solução robusta para análise em tempo real.'
+                },
+                'data-analysis-report-automation': {
+                    image: 'images/projects/report-automation.jpg',
+                    description: 'Automação de relatórios de vendas semanais usando Python, Pandas e SQL, gerando visualizações interativas com Plotly.'
+                },
+                'outro-repositorio-seu': {
+                    description: 'Uma descrição customizada mais longa e detalhada para este projeto, explicando o objetivo e as tecnologias usadas.'
                 }
+                // Adicione mais projetos aqui, seguindo o formato!
+            };
+            // =================================================================================
 
-                filteredRepos.forEach(repo => {
-                    const customInfo = customProjectInfo[repo.name] || {};
+            const defaultProjectImage = 'https://placehold.co/600x400/E5E7EB/6B7280?text=Projeto';
 
-                    const imageUrl = customInfo.image || defaultProjectImage;
-                    const description = customInfo.description || repo.description || 'Sem descrição fornecida.';
+            // Função para buscar dados do perfil do GitHub
+            async function fetchUserData() {
+                const userAvatar = document.getElementById('user-avatar');
+                const userName = document.getElementById('user-name');
+                try {
+                    const response = await fetch(`https://api.github.com/users/${githubUsername}`);
+                    if (!response.ok) throw new Error(`API do GitHub respondeu com status: ${response.status}`);
+                    const user = await response.json();
+                    
+                    userAvatar.src = user.avatar_url;
+                    userName.textContent = user.name || user.login;
+                } catch (error) {
+                    console.error("Erro ao buscar dados do usuário:", error);
+                    userName.textContent = "Tacilio Rodriguez"; // Fallback
+                }
+            }
 
-                    const card = document.createElement('div');
-                    card.className = 'repo-card';
-                    card.innerHTML = `
-                        <img src="${imageUrl}" alt="Imagem do projeto ${repo.name}" class="repo-card-image" onerror="this.src='${defaultProjectImage}'">
-                        <div class="repo-card-content">
-                            <h3>${repo.name}</h3>
-                            <p>${description}</p>
-                            <div class="meta">
-                                <span>💻 ${repo.language || 'N/A'}</span>
-                                <span>⭐ ${repo.stargazers_count}</span>
+            // Função para buscar e exibir os projetos
+            async function fetchAndDisplayProjects() {
+                const repoGrid = document.getElementById('repo-grid');
+                try {
+                    const response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=pushed&per_page=100`);
+                    if (!response.ok) throw new Error('Falha ao buscar repositórios do GitHub.');
+                    
+                    let repos = await response.json();
+                    
+                    // Filtra repositórios que são forks ou o próprio site de portfólio
+                    const filteredRepos = repos.filter(repo => !repo.fork && repo.name !== `${githubUsername}.github.io`);
+
+                    if (filteredRepos.length === 0) {
+                        repoGrid.innerHTML = '<p class="error-message">Nenhum repositório público encontrado.</p>';
+                        return;
+                    }
+                    
+                    repoGrid.classList.remove('loader');
+                    repoGrid.classList.add('repo-grid');
+                    repoGrid.innerHTML = ''; // Limpa a mensagem de "carregando"
+
+                    filteredRepos.forEach(repo => {
+                        const customInfo = customProjectInfo[repo.name] || {};
+                        const imageUrl = customInfo.image || defaultProjectImage;
+                        const description = customInfo.description || repo.description || 'Este projeto não possui uma descrição detalhada.';
+
+                        const card = document.createElement('div');
+                        card.className = 'repo-card';
+                        card.innerHTML = `
+                            <img src="${imageUrl}" alt="Imagem do projeto ${repo.name}" class="repo-card-image" onerror="this.onerror=null;this.src='${defaultProjectImage}';">
+                            <div class="repo-card-content">
+                                <h3>${repo.name}</h3>
+                                <p>${description}</p>
+                                <div class="meta">
+                                    ${repo.language ? `<span><i class="ph-code"></i> ${repo.language}</span>` : ''}
+                                    <span><i class="ph-star"></i> ${repo.stargazers_count}</span>
+                                </div>
+                                <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
                             </div>
-                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
-                        </div>
-                    `;
-                    repoList.appendChild(card);
-                });
-            } catch (error) {
-                console.error('Erro ao buscar projetos:', error);
-                repoList.innerHTML = `<p class="error-message">Não foi possível carregar os projetos. Verifique a conexão ou o console para mais detalhes.</p>`;
+                        `;
+                        repoGrid.appendChild(card);
+                    });
+                } catch (error) {
+                    console.error('Erro ao buscar projetos:', error);
+                    repoGrid.innerHTML = `<p class="error-message">Não foi possível carregar os projetos. Verifique a conexão ou o console para mais detalhes.</p>`;
+                }
             }
-        }
-        
-        // Função para buscar dados do usuário (completa)
-        async function fetchUserData() {
-            const userAvatar = document.getElementById('user-avatar');
-            const userName = document.getElementById('user-name');
-            try {
-                const response = await fetch(`https://api.github.com/users/${username}`);
-                if (!response.ok) throw new Error(`API Error: ${response.status}`);
-                const user = await response.json();
-                
-                userAvatar.src = user.avatar_url;
-                userName.textContent = user.name || user.login;
-            } catch (error) {
-                console.error("Erro ao buscar dados do usuário:", error);
-                userName.textContent = "Tacilio Rodriguez";
-                userAvatar.style.display = 'none';
-            }
-        }
-        
-        fetchUserData();
-        fetchAndDisplayProjects();
+            
+            fetchUserData();
+            fetchAndDisplayProjects();
+        });
     </script>
 </body>
 </html>
