@@ -3,310 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tacilio Rodriguez - Portfólio de Dados</title>
+    <title>Tacilio Rodriguez - Engenheiro de Dados</title>
     <style>
-        /* --- Variáveis de Cor e Estilos Globais --- */
+        /* --- Reset Básico e Estilos Globais --- */
         :root {
-            --primary-color: #0a66c2; /* Azul do LinkedIn */
-            --secondary-color: #1e3a8a;
-            --background-gradient-start: #eef2f3;
-            --background-gradient-end: #f0f2f5;
-            --card-background: #ffffff;
-            --text-color: #333;
-            --light-text-color: #555;
-            --border-color: #e2e8f0;
+            --primary-color: #3b82f6; /* Um azul mais vibrante */
+            --dark-bg: #111827; /* Fundo escuro para a seção Hero */
+            --light-bg: #f9fafb; /* Fundo claro para seções */
+            --card-bg: #ffffff;
+            --text-color-light: #f9fafb;
+            --text-color-dark: #1f2937;
+            --text-color-muted: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            background-color: var(--background-gradient-end);
-            background-image: linear-gradient(135deg, var(--background-gradient-start) 0%, var(--background-gradient-end) 100%);
-            color: var(--text-color);
+            background-color: var(--light-bg);
+            color: var(--text-color-dark);
             margin: 0;
-            padding: 20px;
         }
-        
-        /* --- Container Principal --- */
+
+        /* --- Estrutura e Helpers --- */
+        .section {
+            padding: 5rem 2rem;
+        }
+
         .container {
-            max-width: 1000px;
-            margin: auto;
-            background: var(--card-background);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        /* --- Seção do Perfil --- */
-        .profile {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap; 
+        h1, h2, h3 {
+            margin: 0;
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
         }
 
-        .profile img {
-            width: 120px;
-            height: 120px;
+        /* --- Seção Hero (Apresentação) --- */
+        .hero {
+            background-color: var(--dark-bg);
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .hero img {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 4px solid var(--border-color);
+            border: 5px solid var(--primary-color);
+            margin-bottom: 1.5rem;
         }
 
-        .profile-info {
-            flex-grow: 1;
-            min-width: 250px;
-        }
-        
-        .social-links {
-            margin-top: 10px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .social-links a {
-            color: var(--light-text-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9em;
-            transition: color 0.2s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        .social-links svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor; /* O SVG herda a cor do link */
-        }
-        
-        h1, h2 {
-            color: var(--secondary-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        
-        h1 {
-            font-size: 2.2em;
+        .hero h1 {
+            font-size: 3rem;
             margin-bottom: 0.5rem;
         }
 
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: #d1d5db;
+            transition: color 0.3s, transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .social-links svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
         /* --- Seção de Certificações --- */
-        .certifications {
-            padding-bottom: 1.5rem;
+        #certifications {
+            background-color: var(--card-bg);
         }
 
         .badge-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 20px;
-            justify-items: center;
-            align-items: center;
-            padding: 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
         }
         
         .badge {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
         }
 
         .badge img {
-            width: 100px;
-            height: 100px;
-            transition: transform 0.2s ease;
+            width: 110px;
+            height: 110px;
+            transition: transform 0.3s ease;
         }
         
         .badge img:hover {
-            transform: scale(1.1);
+            transform: translateY(-8px);
         }
 
-        .badge p {
-            font-size: 0.8em;
-            margin-top: 8px;
-            color: var(--light-text-color);
-            max-width: 120px;
+        /* --- Seção de Projetos --- */
+        #projects {
+            background-color: var(--light-bg);
         }
-        
-        /* --- Lista de Repositórios --- */
+
         #repo-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 0;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
         }
-
+        
         .repo-card {
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 8px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .repo-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         }
 
-        .repo-card h3 {
-            margin: 0 0 10px; font-size: 1.2em; color: var(--secondary-color);
-        }
-
-        .repo-card p {
-            font-size: 0.95em; flex-grow: 1; margin-bottom: 15px; color: var(--light-text-color);
-        }
-
-        .repo-card .meta {
-            font-size: 0.85em; color: #777; margin-bottom: 15px;
-        }
-        
-        .repo-card .meta span {
-            display: inline-flex; align-items: center; margin-right: 15px;
-        }
-
+        .repo-card h3 { color: var(--text-color-dark); font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .repo-card p { flex-grow: 1; margin-bottom: 1rem; color: var(--text-color-muted); }
+        .repo-card .meta { font-size: 0.9rem; color: var(--text-color-muted); }
+        .repo-card .meta span { margin-right: 1rem; }
         .repo-card a {
-            color: #fff; background-color: var(--primary-color); padding: 10px 15px; border-radius: 5px; text-align: center; text-decoration: none; font-weight: bold; transition: background-color 0.2s ease;
+            background-color: var(--primary-color); color: white; padding: 0.75rem 1rem;
+            border-radius: 8px; text-align: center; text-decoration: none; font-weight: 500;
+            display: block; margin-top: 1rem; transition: background-color 0.3s;
         }
-
-        .repo-card a:hover {
-            background-color: var(--secondary-color);
-        }
+        .repo-card a:hover { background-color: #2563eb; }
         
-        .loader {
-            text-align: center; font-size: 1.2em; padding: 2rem; color: var(--light-text-color);
+        .loader { text-align: center; font-size: 1.2rem; color: var(--text-color-muted); }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-bg);
+            color: #9ca3af;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
         }
         
         /* --- Responsividade --- */
         @media (max-width: 768px) {
-            body { padding: 10px; }
-            .container { padding: 1.5rem; }
-            .profile { flex-direction: column; align-items: center; text-align: center; }
-            h1 { font-size: 1.8em; }
+            h2 { font-size: 2rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .tagline { font-size: 1.1rem; }
             #repo-list { grid-template-columns: 1fr; }
-            .badge-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="profile">
-            <img id="user-avatar" src="" alt="Avatar do GitHub">
-            <div class="profile-info">
-                <h1 id="user-name">Carregando...</h1>
-                <p id="user-bio"></p>
-                <div class="social-links">
-                    <a id="user-github-link" href="#" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/taciliorodrigues/" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        LinkedIn
-                    </a>
+    <header class="hero">
+        <img id="user-avatar" src="" alt="Foto de Tacilio Rodriguez">
+        <h1 id="user-name">Carregando...</h1>
+        <p class="tagline">Engenheiro de Dados | Transformando dados em insights e soluções de negócio</p>
+        <div class="social-links">
+            <a id="user-github-link" href="#" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/taciliorodrigues/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="certifications" class="section">
+            <div class="container">
+                <h2>Certificações e Competências</h2>
+                <div class="badge-grid">
+                    <div class="badge">
+                        <img src="images/azure-data-engineer.png" alt="Badge Azure Data Engineer Associate">
+                    </div>
+                    <div class="badge">
+                        <img src="images/azure-data-fundamentals.png" alt="Badge Azure Data Fundamentals">
+                    </div>
+                    <div class="badge">
+                        <img src="images/databricks-lakehouse.png" alt="Badge Databricks Lakehouse Fundamentals">
+                    </div>
+                    <div class="badge">
+                        <img src="images/databricks-architect.png" alt="Badge Azure Databricks Platform Architect">
+                    </div>
+                    <div class="badge">
+                        <img src="images/dbt-fundamentals.png" alt="Badge dbt Fundamentals">
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="certifications">
-            <h2>Minhas Certificações</h2>
-            <div class="badge-grid">
-                <div class="badge">
-                    <img src="https://images.credly.com/size/200x200/images/72e613e9-8d0b-4a89-9217-1bffe8f7669b/image.png" alt="Badge da Certificação Azure Data Engineer Associate">
-                    <p>Azure Data Engineer Associate</p>
-                </div>
-                <div class="badge">
-                    <img src="https://images.credly.com/size/200x200/images/336e749a-14ba-45ea-8622-6a3f751e0691/azure-data-fundamentals-600x600.png" alt="Badge da Certificação Azure Data Fundamentals">
-                    <p>Azure Data Fundamentals</p>
-                </div>
-                 <div class="badge">
-                    <img src="https://images.credly.com/size/200x200/images/223961b3-b164-44a8-a276-231853a20e3a/image.png" alt="Badge da Certificação Databricks Lakehouse Fundamentals">
-                    <p>Databricks Lakehouse Fundamentals</p>
-                </div>
-                <div class="badge">
-                    <img src="https://images.credly.com/size/200x200/images/3df5c52c-e369-4258-8954-80a04b19c8f0/image.png" alt="Badge da Certificação Azure Databricks Platform Architect">
-                    <p>Azure Databricks Platform Architect</p>
-                </div>
-                <div class="badge">
-                    <img src="https://images.credly.com/size/200x200/images/d3285906-233f-4f81-a477-b6e9a031976d/dbt_Fundamentals.png" alt="Badge da Certificação dbt Fundamentals">
-                    <p>dbt Fundamentals</p>
-                </div>
+        <section id="projects" class="section">
+            <div class="container">
+                <h2>Projetos em Destaque</h2>
+                <div id="repo-list" class="loader">Buscando projetos no GitHub...</div>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <h2>Meus Projetos</h2>
-        <div id="repo-list" class="loader">Buscando projetos no GitHub...</div>
-    </div>
+    <footer>
+        <p>&copy; 2025 Tacilio Rodriguez. Todos os direitos reservados.</p>
+    </footer>
 
     <script>
         const username = 'taciliorodriguez';
+        // ... (o JavaScript continua o mesmo)
         const repoList = document.getElementById('repo-list');
         const userAvatar = document.getElementById('user-avatar');
         const userName = document.getElementById('user-name');
-        const userBio = document.getElementById('user-bio');
         const userGithubLink = document.getElementById('user-github-link');
         
         async function fetchUserData() {
             try {
                 const response = await fetch(`https://api.github.com/users/${username}`);
-                if (!response.ok) throw new Error(`Erro na API: ${response.status}`);
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
                 const user = await response.json();
                 
                 userAvatar.src = user.avatar_url;
                 userName.textContent = user.name || user.login;
-                userBio.textContent = user.bio || 'Entusiasta de tecnologia e desenvolvimento de software.';
                 userGithubLink.href = user.html_url;
             } catch (error) {
                 console.error("Erro ao buscar dados do usuário:", error);
-                userName.textContent = "Erro ao carregar perfil.";
+                userName.textContent = "Tacilio Rodriguez"; // Fallback name
             }
         }
 
         async function fetchRepos() {
             try {
                 const response = await fetch(`https://api.github.com/users/${username}/repos?sort=pushed&per_page=100`);
-                if (!response.ok) throw new Error(`Erro na API: ${response.status}`);
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
                 const repos = await response.json();
                 
                 repoList.innerHTML = ''; 
                 
-                if (repos.length === 0) {
-                    repoList.innerHTML = '<p>Nenhum repositório público encontrado.</p>';
+                const filteredRepos = repos
+                    .filter(repo => repo.name !== `${username}.github.io` && !repo.fork)
+                    .slice(0, 6); // Limita a 6 projetos para manter a seção focada
+
+                if (filteredRepos.length === 0) {
+                    repoList.innerHTML = '<p>Nenhum projeto em destaque para exibir.</p>';
                     return;
                 }
                 
-                repos
-                    .filter(repo => repo.name !== `${username}.github.io` && !repo.fork)
-                    .forEach(repo => {
-                        const card = document.createElement('div');
-                        card.className = 'repo-card';
-                        
-                        const updatedAt = new Date(repo.pushed_at).toLocaleDateString('pt-BR');
-
-                        card.innerHTML = `
-                            <h3>${repo.name}</h3>
-                            <p>${repo.description || 'Sem descrição.'}</p>
-                            <div class="meta">
-                                <span title="Linguagem Principal">💻 ${repo.language || 'N/A'}</span>
-                                <span title="Estrelas">⭐ ${repo.stargazers_count}</span>
-                                <span title="Última Atualização">🔄 ${updatedAt}</span>
-                            </div>
-                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
-                        `;
-                        repoList.appendChild(card);
-                    });
+                filteredRepos.forEach(repo => {
+                    const card = document.createElement('div');
+                    card.className = 'repo-card';
+                    const updatedAt = new Date(repo.pushed_at).toLocaleDateString('pt-BR');
+                    card.innerHTML = `
+                        <h3>${repo.name}</h3>
+                        <p>${repo.description || 'Sem descrição.'}</p>
+                        <div class="meta">
+                            <span>💻 ${repo.language || 'N/A'}</span>
+                            <span>⭐ ${repo.stargazers_count}</span>
+                        </div>
+                        <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">Ver Código no GitHub</a>
+                    `;
+                    repoList.appendChild(card);
+                });
 
             } catch (error) {
-                repoList.innerHTML = 'Não foi possível carregar os repositórios.';
+                repoList.innerHTML = '<p>Não foi possível carregar os projetos no momento.</p>';
                 console.error("Erro ao buscar repositórios:", error);
             }
         }
