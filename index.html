@@ -11,42 +11,161 @@
             background-color: #f0f2f5;
             color: #333;
             margin: 0;
-            padding: 2rem;
+            padding: 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
             background: #fff;
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        h1 {
-            color: #1e3a8a; /* Um tom de azul escuro */
+        h1, h2 {
+            color: #1e3a8a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
         }
-        a {
-            color: #1d4ed8;
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        #repo-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0;
+            list-style-type: none;
+        }
+        .repo-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: box-shadow 0.3s ease;
+        }
+        .repo-card:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .repo-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+        .repo-card p {
+            font-size: 0.9em;
+            flex-grow: 1; /* Faz a descrição ocupar o espaço disponível */
+            margin-bottom: 15px;
+        }
+        .repo-card a {
+            color: #fff;
+            background-color: #1d4ed8;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
             text-decoration: none;
+            font-weight: bold;
         }
-        a:hover {
-            text-decoration: underline;
+        .repo-card a:hover {
+            background-color: #1e3a8a;
+        }
+        .loader {
+            text-align: center;
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Olá, eu sou o Tacilio Rodriguez!</h1>
-        <p>Bem-vindo ao meu portfólio. Aqui você encontrará meus projetos e contribuições.</p>
-        
-        <h2>Meus Links</h2>
-        <ul>
-            <li><a href="https://github.com/taciliorodriguez" target="_blank">Meu Perfil no GitHub</a></li>
-            <li><a href="https://linkedin.com/in/seu-linkedin" target="_blank">Meu Perfil no LinkedIn</a></li>
-        </ul>
 
-        <h2>Meus Projetos</h2>
-        <p>Em breve, esta seção será preenchida automaticamente com meus repositórios do GitHub!</p>
-        
+    <div class="container">
+        <div class="profile">
+            <img id="user-avatar" src="" alt="Avatar do GitHub">
+            <div>
+                <h1 id="user-name"></h1>
+                <p id="user-bio"></p>
+                <a id="user-github-link" href="#" target="_blank">Ver Perfil no GitHub</a>
+            </div>
+        </div>
+
+        <h2>Meus Repositórios Públicos</h2>
+        <div id="repo-list" class="loader">Carregando projetos...</div>
     </div>
+
+    <script>
+        const username = 'taciliorodriguez'; // SEU NOME DE USUÁRIO DO GITHUB
+        const repoList = document.getElementById('repo-list');
+        const userAvatar = document.getElementById('user-avatar');
+        const userName = document.getElementById('user-name');
+        const userBio = document.getElementById('user-bio');
+        const userGithubLink = document.getElementById('user-github-link');
+
+        // Função para buscar dados do usuário
+        async function fetchUserData() {
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}`);
+                if (!response.ok) {
+                    throw new Error('Usuário não encontrado');
+                }
+                const user = await response.json();
+                
+                userAvatar.src = user.avatar_url;
+                userName.textContent = user.name || user.login; // Usa o nome, se não tiver, usa o login
+                userBio.textContent = user.bio || 'Entusiasta de tecnologia e desenvolvimento.';
+                userGithubLink.href = user.html_url;
+
+            } catch (error) {
+                console.error("Erro ao buscar dados do usuário:", error);
+                userName.textContent = "Erro ao carregar perfil.";
+            }
+        }
+
+        // Função para buscar os repositórios
+        async function fetchRepos() {
+            try {
+                // A API retorna os repositórios ordenados por data de atualização (pushed_at) por padrão
+                const response = await fetch(`https://api.github.com/users/${username}/repos?sort=pushed&per_page=100`);
+                if (!response.ok) {
+                    throw new Error('Erro na rede ou API');
+                }
+                const repos = await response.json();
+                
+                repoList.innerHTML = ''; // Limpa a mensagem "Carregando..."
+                
+                repos
+                    // Filtra para não mostrar o repositório do próprio site
+                    .filter(repo => repo.name !== `${username}.github.io`)
+                    // Filtra repositórios que são forks, se você não quiser mostrá-los
+                    .filter(repo => !repo.fork)
+                    .forEach(repo => {
+                        const card = document.createElement('div');
+                        card.className = 'repo-card';
+                        
+                        card.innerHTML = `
+                            <h3>${repo.name}</h3>
+                            <p>${repo.description || 'Sem descrição.'}</p>
+                            <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
+                        `;
+                        
+                        repoList.appendChild(card);
+                    });
+
+            } catch (error) {
+                repoList.innerHTML = 'Não foi possível carregar os repositórios.';
+                console.error("Erro ao buscar repositórios:", error);
+            }
+        }
+        
+        // Inicia as buscas
+        fetchUserData();
+        fetchRepos();
+    </script>
 </body>
 </html>
