@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -52,7 +53,7 @@
         .hero h1 { font-size: 3rem; margin-bottom: 0.5rem; font-weight: 700; }
         .hero .tagline { font-size: 1.2rem; color: #D1D5DB; margin-bottom: 2rem; max-width: 600px; margin-inline: auto; }
         
-        /* ÍCONE DO LINKEDIN CORRIGIDO */
+        /* ÍCONES SOCIAIS */
         .social-links {
             display: flex;
             justify-content: center;
@@ -136,10 +137,10 @@
             <p class="tagline">Engenheiro de Dados | Transformando dados em insights e soluções de negócio</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/taciliorodrigues/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="LinkedIn">
-                    <i class="ph-linkedin-logo"></i>
+                    <i class="ph ph-linkedin-logo"></i>
                 </a>
                 <a href="https://github.com/TacilioRodriguez" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="GitHub">
-                    <i class="ph-github-logo"></i>
+                    <i class="ph ph-github-logo"></i>
                 </a>
             </div>
         </div>
@@ -175,25 +176,16 @@
         document.addEventListener('DOMContentLoaded', () => {
             const githubUsername = 'TacilioRodriguez';
 
-            // =================================================================================
-            // 🎨 SEU PAINEL DE CONTROLE DE PROJETOS
-            // Personalize seus repositórios aqui. Use o NOME EXATO do repositório.
-            // =================================================================================
             const customProjectInfo = {
-                // Exemplo para o seu repositório "dbt":
                 'dbt': {
-                    image: 'images/projects/dbt-cover.png', // Crie esta imagem e coloque na pasta correta
+                    image: 'images/projects/dbt-cover.png',
                     description: 'Projeto de modelagem e transformação de dados utilizando dbt (Data Build Tool) para criar um pipeline analítico robusto e confiável.'
                 },
-                
-                // Exemplo para outro repositório:
                 'project-x-data-pipeline': {
                     image: 'images/projects/project-x.png',
                     description: 'Pipeline de dados complexo que ingere dados de múltiplas fontes, processa com Spark e armazena em um Data Lakehouse.'
                 }
-                // Adicione mais projetos aqui, seguindo o formato!
             };
-            // =================================================================================
 
             const defaultProjectImage = 'https://placehold.co/600x400/E5E7EB/6B7280?text=Projeto';
 
@@ -202,7 +194,6 @@
                 const userName = document.getElementById('user-name');
                 const projectsGrid = document.getElementById('projects-grid');
 
-                // 1. Busca os dados do usuário (avatar, nome)
                 try {
                     const userResponse = await fetch(`https://api.github.com/users/${githubUsername}`);
                     if (!userResponse.ok) throw new Error(`Erro na API do GitHub: ${userResponse.status}`);
@@ -212,16 +203,13 @@
                     userName.textContent = user.name || user.login;
                 } catch (error) {
                     console.error("Erro ao buscar dados do usuário:", error);
-                    // Mantém o nome padrão se a API falhar
                 }
 
-                // 2. Busca os repositórios
                 try {
                     const reposResponse = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=pushed&per_page=100`);
                     if (!reposResponse.ok) throw new Error('Falha ao buscar repositórios.');
                     
                     let repos = await reposResponse.json();
-                    
                     const filteredRepos = repos.filter(repo => !repo.fork);
 
                     if (filteredRepos.length === 0) {
@@ -231,7 +219,7 @@
                     
                     projectsGrid.classList.remove('loader');
                     projectsGrid.classList.add('projects-grid');
-                    projectsGrid.innerHTML = ''; // Limpa a mensagem "Carregando..."
+                    projectsGrid.innerHTML = '';
 
                     filteredRepos.forEach(repo => {
                         const customInfo = customProjectInfo[repo.name] || {};
@@ -246,8 +234,8 @@
                                 <h3>${repo.name}</h3>
                                 <p>${description}</p>
                                 <div class="meta">
-                                    ${repo.language ? `<span><i class="ph-code"></i> ${repo.language}</span>` : ''}
-                                    <span><i class="ph-star"></i> ${repo.stargazers_count}</span>
+                                    ${repo.language ? `<span><i class="ph ph-code"></i> ${repo.language}</span>` : ''}
+                                    <span><i class="ph ph-star"></i> ${repo.stargazers_count}</span>
                                 </div>
                                 <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
                             </div>
